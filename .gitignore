@@ -65,6 +65,7 @@ target/
 #ide
 .project
 .pydevproject
+.settings/
 
 # Media Files
 media/*
