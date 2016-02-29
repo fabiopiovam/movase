@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load carousel_tags %}
+{% load cms_pages %}
+
+{% block title %} Início {% endblock %}
+
+{% block top %}
+{% generate_carousel 'principal' %}
+{% endblock %}
+
+{% block content %}
+<div class="germinal-section section-institutional">
+	<div class="container marketing">
+		{% list_pages '' %}
+	</div>
+</div>
+
+{% endblock %}
