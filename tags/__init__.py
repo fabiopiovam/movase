@@ -9,7 +9,7 @@ def set_tags(obj, tags):
         object_id=obj.id,
         ).delete()
 
-    tags = tags.split(' ')
+    tags = tags.split(',')
     for tag_name in tags:
         tag, is_new = Tag.objects.get_or_create(name=tag_name.strip())
 
@@ -27,4 +27,4 @@ def get_tags(obj):
         object_id=obj.id,
         )
     
-    return ' '.join([item.tag.name for item in tags])
+    return ','.join([item.tag.name for item in tags])
