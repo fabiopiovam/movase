@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from carousel.models import Carousel
 
 def index(request):    
-    template = loader.get_template('index.html')
+    template = loader.get_template('movase/index.html')
     context = RequestContext(request, {
         'msg'  : 'hola!',
     })
