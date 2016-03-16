@@ -76,3 +76,4 @@ static/*
 # Others
 movase/settings_local.py
 movase/settings_production.py
+movase/movase.wsgi
