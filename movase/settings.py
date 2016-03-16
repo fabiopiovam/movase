@@ -86,6 +86,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'movase/static'),
+    os.path.join(BASE_DIR, 'ia_client_api/static'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -147,6 +148,7 @@ INSTALLED_APPS = (
     'tags',
     'contact',
     'ganalytics',
+    'ia_client_api',
 )
 
 MIDDLEWARE_CLASSES = (

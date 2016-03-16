@@ -1,0 +1,11 @@
+.ia-image-gallery {
+    position: relative;
+    margin-top: 15px;
+}
+
+.ia-image-gallery div {
+    float: left;
+    min-height: 200px;
+    min-width: 200px;
+    text-align: center;
+}
