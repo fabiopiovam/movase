@@ -2,15 +2,16 @@
 
 from django.db import models
 
-class Imports(models.Model):
+class Log(models.Model):
     url         = models.CharField(max_length=100)
     imported_at = models.DateTimeField(auto_now_add=True)
-    total       = models.IntegerField()
-    imported    = models.IntegerField()
-    errors      = models.IntegerField()
+    total       = models.IntegerField(default=0)
+    imported    = models.IntegerField(default=0)
+    errors      = models.IntegerField(default=0)
+    message     = models.CharField(max_length=200)
     
-class ImportItems(models.Model):
-    imports     = models.ForeignKey(Imports)
+class LogItem(models.Model):
+    log         = models.ForeignKey(Log)
     identifier  = models.CharField(max_length=100)
     title       = models.CharField(max_length=100)
     imported    = models.BooleanField(default=False)

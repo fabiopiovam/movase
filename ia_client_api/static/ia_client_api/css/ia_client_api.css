@@ -9,3 +9,28 @@
     min-width: 200px;
     text-align: center;
 }
+
+.ia-summary-img {
+    margin: 5px;
+    max-width: 192px;
+    max-height: 192px;
+}
+
+.ia-audio-gallery {
+    float:left;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.ia-audio-gallery div {
+    float: left;
+    width: 48%;
+    min-height: 120px;
+    margin: 3px;
+    font-size: 11pt;
+}
+
+.ia-audio-gallery div iframe {
+    height:30px;
+    width:100%;
+}
