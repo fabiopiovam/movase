@@ -38,17 +38,19 @@ class Page(Sortable):
         verbose_name = u"página"
     
     def save(self, *args, **kwargs):
-        if not self.id:
+        if not self.id and not self.slug:
             super(Page, self).save(*args, **kwargs)
             self.slug = slugify(self.title)
         super(Page, self).save(*args, **kwargs)
     
     category = models.ManyToManyField(Category, verbose_name=u"Categoria", null=True, blank=True)
     title = models.CharField(u'Título', max_length=100)
-    slug = models.SlugField(max_length=120)
+    slug = models.SlugField(max_length=120, unique=True)
+    summary =  RichTextField(verbose_name=u'Resumo', null=True, blank=True)
     content =  RichTextField(verbose_name=u'Conteúdo')
     
     published = models.BooleanField(u'Publicado', default=True)
+    published_at = models.DateTimeField(verbose_name=u'Publicado em', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

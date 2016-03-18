@@ -17,7 +17,7 @@ class PageAdmin(SortableAdmin):
     list_display = ('title','published')
     search_fields = ['title','slug']
     list_filter = ['category__title','published']
-    fields = ('title','content','category','tags','published')
+    fields = ('title','summary','content','category','tags','published')
     filter_horizontal = ('category',)
     
     form = FormPage
