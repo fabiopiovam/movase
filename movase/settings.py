@@ -44,6 +44,8 @@ DATABASES = {
     }
 }
 
+# Internet Archive client api setting
+IA_BOOKMARKS = 'your_user_ia' #ex.: http://archive.org/bookmarks/your_user_ia
 
 try:
     from settings_production import *
