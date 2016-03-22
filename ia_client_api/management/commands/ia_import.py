@@ -126,6 +126,16 @@ class Command(BaseCommand):
         self.stdout.write(u'Import finished!')
     
     
+    # Solution found in http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size
+    def _get_units_size(self, num, suffix='B'):
+        num = float(num)
+        for unit in ['','Ki','Mi','Gi','Ti','Pi','Ei','Zi']:
+            if abs(num) < 1024.0:
+                return "%3.1f%s%s" % (num, unit, suffix)
+            num /= 1024.0
+        return "%.1f%s%s" % (num, 'Yi', suffix)
+    
+    
     def _mount_summary(self, item_content):
         
         summary = strip_tags(item_content['metadata']['description'][0])
@@ -172,8 +182,8 @@ class Command(BaseCommand):
         
         embed   = u'<iframe frameborder="0" src="https://archive.org/embed/%s/%s">Please upgrade your browser</iframe>' % (file['identifier'], file['original'])
         a_title = u"Clique com o botão direito e escolha 'Salvar link como...'"
-        dl_mp3  = u'<a title="%s" target="_blank" href="https://archive.org/download/%s/%s">VBR MP3 (%s)</a>' % (a_title, file['identifier'], file['original'], file['original_details']['size'])
-        dl_ogg  = u'<a title="%s" target="_blank" href="https://archive.org/download/%s/%s">Ogg Vorbis (%s)</a>' % (a_title, file['identifier'], file['filename'], file['size'])
+        dl_mp3  = u'<a title="%s" target="_blank" href="https://archive.org/download/%s/%s">VBR MP3 (%s)</a>' % (a_title, file['identifier'], file['original'], self._get_units_size(file['original_details']['size']))
+        dl_ogg  = u'<a title="%s" target="_blank" href="https://archive.org/download/%s/%s">Ogg Vorbis (%s)</a>' % (a_title, file['identifier'], file['filename'], self._get_units_size(file['size']))
         
         return u'%s <br /> %s <br /> %s | %s' % (title, embed, dl_mp3, dl_ogg)
     
