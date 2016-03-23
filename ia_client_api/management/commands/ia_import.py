@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.utils.html import strip_tags
 
 from ia_client_api.models import Log, LogItem
-from cms.models import Page
+from cms.models import Page, Category
 from tags import set_tags
 
 class Command(BaseCommand):
@@ -82,7 +82,8 @@ class Command(BaseCommand):
             
             published_at = item_content['metadata']['publicdate'][0]
             summary = self._mount_summary(item_content)
-
+            category = self._create_category()
+            
             #persist page
             try:
                 page = Page.objects.create(title=item_content['metadata']['title'][0],
@@ -91,6 +92,7 @@ class Command(BaseCommand):
                                            content=content,
                                            published=True,
                                            published_at=published_at)
+                page.category.add(category)
             except IntegrityError as e:
                 total -= 1
                 self.stdout.write('Warning: Page %s already exists!' % item['identifier'])
@@ -124,6 +126,15 @@ class Command(BaseCommand):
         log.save()
         
         self.stdout.write(u'Import finished!')
+    
+    
+    def _create_category(self):
+        try:
+            category = Category.objects.create(title=u'Notícias', slug=u'noticias')
+        except IntegrityError as e:
+            category = Category.objects.get(slug=u'noticias')
+        
+        return category
     
     
     # Solution found in http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size
