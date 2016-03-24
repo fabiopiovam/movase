@@ -1,14 +1,25 @@
-{% for page in pages %}
-<div class="row featurette">
-	<div class="col-md-12">
-		<h2 class="featurette-heading"> <a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
-		<p class="lead">
+<div class="blog-index">
+    {% for page in pages %}
+    <article>
+        <header>
+            <h1 class="entry-title"><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h1>
+            <p class="meta">
+                <time datetime='{{ page.published_at|date:"Y-m-d H:i:s" }}' pubdate>
+                    Publicado em {{ page.published_at|date:"d/m/Y H:i:s" }}
+                </time>
+            </p>
+        </header>
+
+        <div class="entry-content">
             {% autoescape off %}
             {{ page.summary }}
             {% endautoescape %}
-		</p>
-	</div>
+        </div>
+        {% if page.summary != page.content %}
+        <footer>
+            <a rel="full-article" href="{{ page.get_absolute_url }}">Leia &crarr;</a>
+        </footer>
+        {% endif %}
+    </article>
+    {% endfor %}
 </div>
-
-{% if not forloop.last %}<hr class="featurette-divider">{% endif %}
-{% endfor %}

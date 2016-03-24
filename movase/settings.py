@@ -87,6 +87,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'templates/pelican-octopress-theme/static'),
     os.path.join(BASE_DIR, 'movase/static'),
     os.path.join(BASE_DIR, 'ia_client_api/static'),
 )
@@ -95,6 +96,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates/pelican-octopress-theme/templates'),
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'movase/templates'),
 )
