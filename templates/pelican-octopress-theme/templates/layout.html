@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="no-js" lang="en">
+    <!--<![endif]-->
+    {% load staticfiles %}
+    {% load google_analytics %}
+    {% load cms_pages %}
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %} | MOVA-SE!</title>
+        
+        {% block head %}{% endblock %}
+
+        <!-- http://t.co/dKP3o1e -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="apple-touch-icon" href="{% static 'movase/apple-touch-icon.png' %}">
+        <link href="{% static 'images/favicon.png' %}" rel="icon">
+        
+        <link rel="stylesheet" href="{% static 'movase/assets/lightbox2-master/css/lightbox.css' %}">
+        <link href="{% static 'css/main.css' %}" media="screen, projection"
+        rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'ia_client_api/css/ia_client_api.css' %}">
+        
+        <link href="{% static 'css/fonts_pt_serif.css' %}"
+        rel="stylesheet" type="text/css">
+        
+        <link href="{% static 'css/fonts_pt_sans.css' %}"
+        rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <header role="banner">
+            {% include '_includes/header.html' %}
+        </header>
+        <nav role="navigation">
+            <ul class="subscription" data-subscription="rss">
+                <li><a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" rel="subscribe-rss">
+                    <img src="{% static 'images/rss.png' %}">
+                </a></li>
+            </ul>
+            
+            <form action="https://www.google.com/search" method="get">
+                <fieldset role="search">
+                    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+                </fieldset>
+            </form>
+            
+            <ul class="main-navigation">
+                <li>
+                    <a href="/">Início</a>
+                </li>
+                <li>
+                    <a href="#">Manifesto</a>
+                </li>
+                <li>
+                    <a href="/contact/">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="main">
+            <div id="content">
+                {% block content %}{% endblock %}
+                {% include '_includes/sidebar.html' %}
+            </div>
+        </div>
+        <footer role="contentinfo">
+            {% include '_includes/footer.html' %}
+        </footer>
+        <script src="{% static 'js/modernizr-2.0.js' %}"></script>
+        <script src="{% static 'js/ender.js' %}"></script>
+        <script src="{% static 'js/octopress.js' %}"></script>
+        <script src="{% static 'movase/assets/lightbox2-master/js/lightbox.js' %}"></script>
+        {% include '_includes/after_footer.html' %}
+    </body>
+</html>
