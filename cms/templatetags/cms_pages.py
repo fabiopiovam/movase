@@ -6,13 +6,13 @@ from cms.models import Category, Page
 register = Library()
 
 @register.inclusion_tag('cms/_list_pages.html')
-def list_pages(category=''):
+def list_pages(category='', limit=10):
     
     try:
         if not category:
-            pages = Page.activated.all()
+            pages = Page.activated.all()[:limit]
         else:
-            pages = Page.activated.filter(category__slug=category)
+            pages = Page.activated.filter(category__slug=category)[:limit]
         
     except ObjectDoesNotExist:
         pages = None
@@ -20,13 +20,13 @@ def list_pages(category=''):
     return {'pages': pages,}
 
 @register.assignment_tag
-def get_page_links(category=''):
+def get_page_links(category='', limit=20):
     
     try:
         if not category:
-            pages = Page.activated.all()
+            pages = Page.activated.all()[:limit]
         else:
-            pages = Page.activated.filter(category__slug=category)
+            pages = Page.activated.filter(category__slug=category)[:limit]
         
     except ObjectDoesNotExist:
         pages = None
