@@ -21,9 +21,14 @@
         <link rel="apple-touch-icon" href="{% static 'movase/apple-touch-icon.png' %}">
         <link href="{% static 'images/favicon.png' %}" rel="icon">
         
-        <link rel="stylesheet" href="{% static 'movase/assets/lightbox2-master/css/lightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'movase/css/bootstrap.css' %}">
+        
         <link href="{% static 'css/main.css' %}" media="screen, projection"
         rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'movase/assets/lightbox2-master/css/lightbox.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'movase/css/lightbox_custom.css' %}">
         
         <link rel="stylesheet" href="{% static 'ia_client_api/css/ia_client_api.css' %}">
         
@@ -64,6 +69,9 @@
             </ul>
         </nav>
         <div id="main">
+            
+            {% block top %} {% endblock %}
+            
             <div id="content">
                 {% block content %}{% endblock %}
                 {% include '_includes/sidebar.html' %}
@@ -72,10 +80,16 @@
         <footer role="contentinfo">
             {% include '_includes/footer.html' %}
         </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write("<script src=\"{% static 'movase/js/vendor/jquery-1.11.2.min.js' %}\"><\/script>")</script>
         <script src="{% static 'js/modernizr-2.0.js' %}"></script>
         <script src="{% static 'js/ender.js' %}"></script>
         <script src="{% static 'js/octopress.js' %}"></script>
         <script src="{% static 'movase/assets/lightbox2-master/js/lightbox.js' %}"></script>
+        {% block hide_sidebar %}<script type="text/javascript">$('body').addClass('collapse-sidebar')</script>{% endblock %}
+        
+        {% block script %}{% endblock %}
+        
         {% include '_includes/after_footer.html' %}
     </body>
 </html>
