@@ -11,5 +11,10 @@
 {% endblock %}
 
 {% block content %}
-{% list_pages 'noticias' %}
+<div class="blog-index">
+    {% list_pages 'noticias' 5 %}
+    {% list_pages 'denuncias' 2 %}
+</div>
 {% endblock %}
+
+{% block hide_sidebar %}{% endblock %}

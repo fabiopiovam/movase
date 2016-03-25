@@ -3,10 +3,36 @@
 {% block title %} {{ page.title }} {% endblock %}
 
 {% block content %}
-<h1> {{ page.title }}</h1>
-<p>
-    {% autoescape off %}
-    {{ page.content }}
-    {% endautoescape %}
-</p>
+<div>
+    <article class="hentry" role="article">
+        <header>
+            <h1 class="entry-title">{{ page.title }}</h1>
+            <p class="meta">
+                <time datetime='{{ page.published_at|date:"Y-m-d H:i:s" }}' pubdate>
+                    Publicado em {{ page.published_at|date:"d \d\e F \d\e Y" }}
+                </time>
+            </p>
+        </header>
+
+        <div class="entry-content">
+            {% autoescape off %}
+            {{ page.content }}
+            {% endautoescape %}
+        </div>
+
+        <footer>
+            <p class="meta">
+                <span class="byline author vcard"> Postado por <span class="fn"> movase.info </span> </span>
+                {% include '_includes/article_time.html' %}
+                <span class="categories"> <a class='category' href='{{ SITEURL }}/{{ article.category.url }}'>{{ page.category }}</a> </span>
+                {% if page.tags %}
+                <span class="categories"> {% for tag in page.tags %} <a class="category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+                    {% endfor %} </span>
+                {% endif %}
+            </p>
+
+            {% include '_includes/sharing.html' %}
+        </footer>
+    </article>
+</div>
 {% endblock %}

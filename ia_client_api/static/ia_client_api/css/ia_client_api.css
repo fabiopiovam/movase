@@ -5,8 +5,8 @@
 
 .ia-image-gallery div {
     float: left;
-    min-height: 200px;
-    min-width: 200px;
+    margin: 5px;
+    min-height: 220px;
     text-align: center;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .ia-audio-gallery {
-    float:left;
+    float: left;
     margin-top: 15px;
     width: 100%;
 }
@@ -31,6 +31,6 @@
 }
 
 .ia-audio-gallery div iframe {
-    height:30px;
-    width:100%;
+    height: 30px;
+    width: 100%;
 }
