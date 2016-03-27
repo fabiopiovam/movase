@@ -1,0 +1,10 @@
+{% for page in pages %}
+<article>
+    <div align="center">
+        {% autoescape off %}
+        {{ page.summary }}
+        {% endautoescape %}
+        <p><a rel="full-article" href="{{ page.get_absolute_url }}" title="Saiba mais">{{ page.title }}</a></p>
+    </div>
+</article>
+{% endfor %}
