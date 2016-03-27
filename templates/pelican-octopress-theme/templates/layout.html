@@ -10,31 +10,31 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %} | MOVA-SE!</title>
-        
+
         {% block head %}{% endblock %}
 
         <!-- http://t.co/dKP3o1e -->
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link rel="apple-touch-icon" href="{% static 'movase/apple-touch-icon.png' %}">
         <link href="{% static 'images/favicon.png' %}" rel="icon">
-        
+
         <link rel="stylesheet" href="{% static 'movase/css/bootstrap.css' %}">
-        
+
         <link href="{% static 'css/main.css' %}" media="screen, projection"
         rel="stylesheet" type="text/css">
-        
+
         <link rel="stylesheet" href="{% static 'movase/assets/lightbox2-master/css/lightbox.css' %}">
-        
+
         <link rel="stylesheet" href="{% static 'movase/css/lightbox_custom.css' %}">
-        
+
         <link rel="stylesheet" href="{% static 'ia_client_api/css/ia_client_api.css' %}">
-        
+
         <link href="{% static 'css/fonts_pt_serif.css' %}"
         rel="stylesheet" type="text/css">
-        
+
         <link href="{% static 'css/fonts_pt_sans.css' %}"
         rel="stylesheet" type="text/css">
     </head>
@@ -45,23 +45,29 @@
         </header>
         <nav role="navigation">
             <ul class="subscription" data-subscription="rss">
-                <li><a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" rel="subscribe-rss">
-                    <img src="{% static 'images/rss.png' %}">
-                </a></li>
+                <li>
+                    <a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" rel="subscribe-rss"> <img src="{% static 'images/rss.png' %}"> </a>
+                </li>
             </ul>
-            
+
             <form action="https://www.google.com/search" method="get">
                 <fieldset role="search">
                     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
                 </fieldset>
             </form>
-            
+
             <ul class="main-navigation">
                 <li>
-                    <a href="/">Início</a>
+                    <a href="/pages/manifesto">Manifesto</a>
                 </li>
                 <li>
-                    <a href="#">Manifesto</a>
+                    <a href="/pages/category/noticias">Notícias</a>
+                </li>
+                <li>
+                    <a href="/pages/category/campanhas">Campanhas</a>
+                </li>
+                <li>
+                    <a href="/pages/category/denuncias">Denúncias</a>
                 </li>
                 <li>
                     <a href="/contact/">Contato</a>
@@ -69,9 +75,9 @@
             </ul>
         </nav>
         <div id="main">
-            
+
             {% block top %} {% endblock %}
-            
+
             <div id="content">
                 {% block content %}{% endblock %}
                 {% include '_includes/sidebar.html' %}
@@ -81,15 +87,20 @@
             {% include '_includes/footer.html' %}
         </footer>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write("<script src=\"{% static 'movase/js/vendor/jquery-1.11.2.min.js' %}\"><\/script>")</script>
+        <script>
+            window.jQuery || document.write("<script src=\"{% static 'movase/js/vendor/jquery-1.11.2.min.js' %}\"><\/script>")
+        </script>
         <script src="{% static 'js/modernizr-2.0.js' %}"></script>
         <script src="{% static 'js/ender.js' %}"></script>
         <script src="{% static 'js/octopress.js' %}"></script>
         <script src="{% static 'movase/assets/lightbox2-master/js/lightbox.js' %}"></script>
-        {% block hide_sidebar %}<script type="text/javascript">$('body').addClass('collapse-sidebar')</script>{% endblock %}
-        
+        {% block hide_sidebar %}
+        <script type="text/javascript">
+            $('body').addClass('collapse-sidebar')
+        </script>{% endblock %}
+
         {% block script %}{% endblock %}
-        
+
         {% include '_includes/after_footer.html' %}
     </body>
 </html>
