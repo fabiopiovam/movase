@@ -21,6 +21,7 @@ def pages(request, category_slug=''):
     template = loader.get_template('cms/list_pages.html')
     context = RequestContext(request, {
         'pages'  : pages,
+        'page_section'  : 'cms/_list_pages_main.html',
     })
     return HttpResponse(template.render(context))
 
