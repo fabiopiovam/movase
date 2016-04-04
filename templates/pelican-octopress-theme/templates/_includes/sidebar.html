@@ -1,10 +1,10 @@
 {% load cms_pages %}
 {% load tags_tags %}
 <aside class="sidebar">
-    <section>
+    <!-- section>
         <h1>Lutadorxs Sociais</h1>
         {% list_pages 'lutadorxs-sociais' 1 '?' 'sidebar' %}
-    </section>
+    </section -->
     <section>
         <h1>Links</h1>
         <ul>
@@ -16,17 +16,20 @@
     
     <section>
         <h1>Tags</h1>
-        {% for tag, article in tags %}
-        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+        {% tags_cloud as tags %}
+        {% for tag in tags %}
+        <a href="/tags/{{ tag.tag__name }}/">{{ tag.tag__name }}</a> ({{ tag.score }}),
         {% endfor %}
+        <a href="/tags/">outras tags...</a>
     </section>
     
     <section>
-        <h1>Categories</h1>
+        <h1>Categorias</h1>
         <ul id="recent_posts">
-            {% for category, articles in categories %}
+            {% get_categories as categories %}
+            {% for cat in categories %}
             <li>
-                <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+                <a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a>
             </li>
             {% endfor %}
         </ul>

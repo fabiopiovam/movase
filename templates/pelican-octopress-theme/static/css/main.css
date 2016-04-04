@@ -1612,7 +1612,8 @@ aside.sidebar:hover a:hover {
         border-bottom: 1px solid #e0e0e0;
         border-right: 1px solid #e0e0e0;
         content: "\00BB";
-        text-indent: -1px
+        text-indent: -1px;
+        box-sizing: unset;
     }
     .collapse-sidebar .toggle-sidebar {
         text-indent: 0px;
