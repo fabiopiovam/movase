@@ -24,14 +24,21 @@
             <p class="meta">
                 <span class="byline author vcard"> Postado por <span class="fn"> movase.info </span> </span>
                 {% include '_includes/article_time.html' %}
-                <span class="categories"> <a class='category' href='{{ SITEURL }}/{{ article.category.url }}'>{{ page.category }}</a> </span>
-                {% if page.tags %}
-                <span class="categories"> {% for tag in page.tags %} <a class="category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
-                    {% endfor %} </span>
-                {% endif %}
+                
+                <span class="categories">
+                    {% for category in page.category.all %}
+                    <a class='category' href='{{ category.get_absolute_url }}'>{{ category.title }}</a>{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                </span>
+                
+                <span class="categories"> 
+                    {% with page as object %}
+                    {% include "tags/show_tags.html" %}
+                    {% endwith %}
+                </span>
             </p>
 
-            {% include '_includes/sharing.html' %}
+            {# include '_includes/sharing.html' #}
         </footer>
     </article>
 </div>
