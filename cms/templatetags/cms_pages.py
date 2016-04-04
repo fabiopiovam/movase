@@ -34,3 +34,17 @@ def get_page_links(category='', limit=20):
         pages = None
     
     return pages
+
+@register.assignment_tag
+def get_categories(object=None, limit=20):
+    
+    try:
+        if not object:
+            categories = Category.objects.all()[:limit]
+        else:
+            categories = object.category_set.all()[:limit]
+        
+    except ObjectDoesNotExist:
+        categories = None
+    
+    return categories
