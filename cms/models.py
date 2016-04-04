@@ -11,8 +11,12 @@ class Category(models.Model):
     def __unicode__(self):
         return u'%s' % self.title
     
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_slug': self.slug})
+    
     class Meta:
         verbose_name = u"categoria"
+        ordering = ('title',)
     
     def save(self, *args, **kwargs):
         if not self.id:
