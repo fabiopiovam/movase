@@ -1,6 +1,20 @@
-<h1>Tags</h1>
-<ul>
-    {% for tag in list %}
-    <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
-    {% endfor %}
-</ul>
+{% extends 'layout.html' %}
+
+{% block title %} Tags {% endblock %}
+
+{% block content %}
+<div>
+    <article role="article">
+        <h1>Tags</h1>
+        <p>
+            {% for tag in list %}
+            {% if tag|slugify %}
+            <div style="float: left;">
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a> &nbsp;|&nbsp;
+            </div>
+            {% endif %}
+            {% endfor %}
+        </p>
+    </article>
+</div>
+{% endblock %}
