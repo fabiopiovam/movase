@@ -3,22 +3,40 @@
 
 {% block title %} Contato {% endblock %}
 
+{% block head %}
+<link href="{% static 'movase/css/forms.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block script %}
 <script src="{% static 'contact/js/contact_form.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 {% block content %}
-<form name="form-contact" id="form-contact" action="" method="post" accept-charset="utf-8">
-    {% if mail_sent == True %}
-    <p class='mail-message mail-success'>Mensagem enviada com sucesso!<br/>Em breve entraremos em contato.</p>
-    {% elif mail_sent == False %}
-    <p class='mail-message mail-error'>Não foi possível enviar a mensagem!<br/>Por favor, tente novamente.</p>
-    {% endif %}
-    
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p>
-        <input type="submit" value="Enviar"/>
-    </p>
-</form>
+<div class="blog-index">
+    <article>
+        <h1>Contato</h1>
+        
+        <form class="form-horizontal" name="form-contact" id="form-contact" action="" method="post" accept-charset="utf-8">
+            {% if mail_sent == True %}
+            <p class='mail-message mail-success'>
+                Mensagem enviada com sucesso!
+                <br/>
+                Em breve entraremos em contato.
+            </p>
+            {% elif mail_sent == False %}
+            <p class='mail-message mail-error'>
+                Não foi possível enviar a mensagem!
+                <br/>
+                Por favor, tente novamente.
+            </p>
+            {% endif %}
+            
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </p>
+        </form>
+    </article>
+</div>
 {% endblock %}
