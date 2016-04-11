@@ -28,15 +28,16 @@
 
         <link rel="stylesheet" href="{% static 'movase/assets/lightbox2-master/css/lightbox.css' %}">
 
+        <link rel="stylesheet" href="{% static 'movase/assets/scrollToTop/css/scrollToTop.css' %}">
+        <link rel="stylesheet" href="{% static 'movase/assets/scrollToTop/css/easing.css' %}">
+
         <link rel="stylesheet" href="{% static 'movase/css/lightbox_custom.css' %}">
 
         <link rel="stylesheet" href="{% static 'ia_client_api/css/ia_client_api.css' %}">
 
-        <link href="{% static 'css/fonts_pt_serif.css' %}"
-        rel="stylesheet" type="text/css">
+        <link href="{% static 'css/fonts_pt_serif.css' %}" rel="stylesheet" type="text/css">
 
-        <link href="{% static 'css/fonts_pt_sans.css' %}"
-        rel="stylesheet" type="text/css">
+        <link href="{% static 'css/fonts_pt_sans.css' %}" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -94,9 +95,21 @@
         <script src="{% static 'js/ender.js' %}"></script>
         <script src="{% static 'js/octopress.js' %}"></script>
         <script src="{% static 'movase/assets/lightbox2-master/js/lightbox.js' %}"></script>
+        <script src="{% static 'movase/assets/scrollToTop/src/jquery-scrollToTop.js' %}"></script>
+        <script type="text/javascript" charset="utf-8">
+            /*
+             Solution found in http://www.jqueryscript.net/other/Simple-jQuery-Plugin-For-Scroll-To-Top-Button-scrollToTop.html
+             * */
+            jQuery(function($) {
+                $('body').scrollToTop({
+                    skin: 'cycle',
+                    animation: 'slide', // fade, slide, none
+                });
+            });
+        </script>
         {% block hide_sidebar %}
         <script type="text/javascript">
-            $('body').addClass('collapse-sidebar')
+            $('body').addClass('collapse-sidebar');
         </script>{% endblock %}
 
         {% block script %}{% endblock %}
