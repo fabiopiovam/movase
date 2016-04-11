@@ -1,11 +1,7 @@
 <p>
-  {% if LICENSE %}
-      {{ LICENSE }} 
-  {% else %}
-    {% set years = dates|groupby('date.year')|sort(reverse=False) %}
-    {% set sinceYear = years|first|first|default('2014') %}
-    {% set toYear = years|last|first|default('2014') %}
-    Copyright &copy; {% if sinceYear == toYear %} {{ sinceYear }} {% else %} {{ sinceYear }}&ndash;{{ toYear }} {% endif%} {{ AUTHOR }} &mdash;
-  {% endif %}
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+    (c)Copyleft - <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> - 
+    <span class="credit"> 
+        Template by <a href="http://getpelican.com" target="_blank">Pelican</a> - 
+        Fork me on <a href="https://github.com/laborautonomo/movase" target="_blank">GitHub</a>
+    </span>
 </p>
