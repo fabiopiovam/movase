@@ -36,7 +36,7 @@ Installation / Usage
 
 Internet Archive importing contents
 -----------------------------------
-The `ia_client_api` APP import the archive.org contents to CMS APP using Bookmarks list as reference.
+The `ia_client_api` APP import the [archive.org](https://archive.org/) contents to CMS APP using Bookmarks list as reference.
 
 #### Using the IA_CLIENT_API
 1. Set the `IA_BOOKMARKS` parameter of `movase/settings.py`
