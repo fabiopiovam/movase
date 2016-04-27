@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'contact',
     'ganalytics',
     'ia_client_api',
+    'links',
 )
 
 MIDDLEWARE_CLASSES = (

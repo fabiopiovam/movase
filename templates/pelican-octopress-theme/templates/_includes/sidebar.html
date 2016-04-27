@@ -1,5 +1,6 @@
 {% load cms_pages %}
 {% load tags_tags %}
+{% load links_list %}
 <aside class="sidebar">
     <!-- section>
         <h1>Lutadorxs Sociais</h1>
@@ -8,9 +9,12 @@
     <section>
         <h1>Links</h1>
         <ul>
-            <li>
-                <a href="https://www.facebook.com/coletivochegadxs/" title="Coletivo Chegadxs - V.M. - MX70">Coletivo Chegadxs</a>
-            </li>
+        {% get_links as links %}
+        {% for link in links %}
+        <li>
+            <a href="{{link.url}}" title="{{link.description}}">{{link.title}}</a>
+        </li>
+        {% endfor %}
         </ul>
     </section>
     
