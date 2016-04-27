@@ -40,7 +40,6 @@ class Page(Sortable):
     
     class Meta:
         verbose_name = u"página"
-        ordering = ('-published_at','-created_at',)
     
     def save(self, *args, **kwargs):
         if not self.id and not self.slug:
