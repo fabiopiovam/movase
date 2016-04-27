@@ -111,6 +111,7 @@ CKEDITOR_CONFIGS = {
        'height': 300,
        'width': '100%',
        'entities_latin': False,
+       'allowedContent' : True,
    },
 }
 
