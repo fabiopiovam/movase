@@ -7,14 +7,17 @@
         {% list_pages 'lutadorxs-sociais' 1 '?' 'sidebar' %}
     </section -->
     <section>
+        {% get_links as links %}
+        {% if links %}
         <h1>Links</h1>
         <ul>
-        {% get_links as links %}
+        
         {% for link in links %}
         <li>
             <a href="{{link.url}}" title="{{link.description}}">{{link.title}}</a>
         </li>
         {% endfor %}
+        {% endif %}
         </ul>
     </section>
     
