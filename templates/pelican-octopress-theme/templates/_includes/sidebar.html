@@ -14,7 +14,7 @@
         
         {% for link in links %}
         <li>
-            <a href="{{link.url}}" title="{{link.description}}">{{link.title}}</a>
+            <a href="{{link.url}}" target="{{ link.target_blank|yesno:"_blank,_self" }}" title="{{link.description}}">{{link.title}}</a>
         </li>
         {% endfor %}
         {% endif %}
