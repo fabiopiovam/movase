@@ -7,7 +7,7 @@ register = Library()
 
 @register.inclusion_tag('cms/_list_pages.html')
 def list_pages(category='', limit=10, orderby='id', section='main'):
-    
+    #TODO: verificar orderby
     try:
         if not category:
             pages = Page.activated.all().order_by(orderby)[:limit]

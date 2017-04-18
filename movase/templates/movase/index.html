@@ -12,8 +12,8 @@
 
 {% block content %}
 <div class="blog-index">
-    {% list_pages 'noticias' 5 %}
-    {% list_pages 'denuncias' 2 %}
+    {% list_pages 'noticias' 5 '-published_at' %}
+    {% list_pages 'denuncias' 2 '-published_at' %}
 </div>
 {% endblock %}
 
